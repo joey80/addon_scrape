@@ -2,27 +2,28 @@ const puppeteer = require('puppeteer');
 
 let browser;
 let page;
+let results = [];
+const addOns = {
+    
+}
 
-const awesomeIcons = async (url) => {
+const getUpdate = async (name, url, elm) => {
     await page.goto(url, {waitUntil: 'networkidle2'});
-    const innerText = await page.evaluate(() => document.querySelector('.sidebar-download').innerText);
-    const answer = innerText.slice(10, innerText.length);
-    console.log('AwEEsome Icons', answer);
-};
-
-const calendar = async (url) => {
-    await page.goto(url, {waitUntil: 'networkidle2'});
-    const innerText = await page.evaluate(() => document.querySelector('.content > h2').innerText);
-    const answer = innerText.slice(1, -13).trim();
-    console.log('Calendar', answer);
+    const innerText = await page.$eval(elm, el => el.innerText);
+    let result = {
+        "name": name,
+        "version": innerText
+    };
+    results.push(result);
 };
 
 const init = async () => {
     browser = await puppeteer.launch();
     page = await browser.newPage();
-    await awesomeIcons('https://devot-ee.com/add-ons/aweesome-icons');
-    await calendar('http://docs.solspace.com/expressionengine/calendar/v3/setup/changelog.html');
+    await getUpdate('awEEsome Icons', 'https://devot-ee.com/add-ons/aweesome-icons', '.sidebar-download');
+    await getUpdate('Calendar', 'http://docs.solspace.com/expressionengine/calendar/v3/setup/changelog.html', '.content > h2');
     await browser.close();
+    console.log(results);
 }
 
 init();
