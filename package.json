@@ -1,0 +1,22 @@
+{
+  "name": "addon_scrape",
+  "version": "1.0.0",
+  "description": "EE Addon Web Scraper",
+  "main": "scraper.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joey80/addon_scrape.git"
+  },
+  "author": "Joey Leger",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joey80/addon_scrape/issues"
+  },
+  "homepage": "https://github.com/joey80/addon_scrape#readme",
+  "dependencies": {
+    "puppeteer": "^1.12.2"
+  }
+}
