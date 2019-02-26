@@ -181,6 +181,7 @@ const getUpdate = async (name, url, element) => {
     results.push(result);
 };
 
+// Start puppeteer 
 const init = async () => {
     browser = await puppeteer.launch();
     page = await browser.newPage();
