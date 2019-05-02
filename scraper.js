@@ -151,11 +151,20 @@ const addOns = [
         "element": "div.changelog:nth-child(1) > h2:nth-child(2)"
     },
     {
-        "name": "Wygwma",
+        "name": "Wygwam",
         "url": "https://eeharbor.com/wygwam/changelog",
         "element": "div.changelog:nth-child(1) > h2:nth-child(2)"
     }
 ];
+
+const first = 'https://www.learnexportcompliance.com';
+const ecti = [
+"/seminars/university-export-controls-2019/#INSTRUCTORS", 
+"/seminars/US-Export-Controls-on-Non-US-Transactions/seminars/ear-ofac-export-controls-agenda-fall-2017/&from="];
+
+const newArray = ecti.map((url) => {
+    return `${first}${url}`;
+});
 
 const getUpdate = async (name, url, element) => {
     console.log('Retrieving', name + ' ...');
@@ -181,17 +190,37 @@ const getUpdate = async (name, url, element) => {
     results.push(result);
 };
 
+let finalArray = [];
+
+const getNewUpdate = async (url) => {
+    const response = await page.goto(url);
+    const status = response._status;
+
+    let newResult = {
+        "link": url,
+        "status": status
+    };
+
+    console.log(newResult);
+
+    finalArray.push(newResult);
+};
+
 // Start puppeteer 
 const init = async () => {
     browser = await puppeteer.launch();
     page = await browser.newPage();
 
-    for (let addOn of addOns) {
-       await getUpdate(addOn.name, addOn.url, addOn.element);
-    }
+    // for (let addOn of addOns) {
+    //    await getUpdate(addOn.name, addOn.url, addOn.element);
+    // }
 
+    for (let item of newArray) {
+        await getNewUpdate(item);
+    }
+    
     await browser.close();
-    console.log(results);
+    console.log(finalArray);
 }
 
 init();
