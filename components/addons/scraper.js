@@ -158,9 +158,6 @@ const addOns = [
 ];
 
 const first = 'https://www.learnexportcompliance.com';
-const ecti = [
-"/seminars/university-export-controls-2019/#INSTRUCTORS", 
-"/seminars/US-Export-Controls-on-Non-US-Transactions/seminars/ear-ofac-export-controls-agenda-fall-2017/&from="];
 
 const newArray = ecti.map((url) => {
     return `${first}${url}`;
