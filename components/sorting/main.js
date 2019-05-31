@@ -1,3 +1,3 @@
 var sort = require('./sort');
 
-sort.init();
+sort.startSort();

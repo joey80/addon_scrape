@@ -2,14 +2,15 @@
   "name": "addon_scrape",
   "version": "1.0.0",
   "scripts": {
-    "build": "webpack --config webpack.prod.js"
+    "build": "webpack --config webpack.prod.js",
+    "test": "jest"
   },
   "devDependencies": {
-    "autoprefixer": "~8.2.0",
     "@babel/core": "^7.2.2",
     "@babel/polyfill": "^7.2.5",
     "@babel/preset-env": "^7.2.3",
     "@babel/register": "^7.0.0",
+    "autoprefixer": "~8.2.0",
     "babel-loader": "^8.0.5",
     "browser-sync": "^2.26.5",
     "browsersync-webpack-plugin": "^0.6.0",
@@ -29,6 +30,7 @@
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-webpack-plugin": "^2.4.2",
     "import-glob": "~1.5",
+    "jest": "^24.8.0",
     "mini-css-extract-plugin": "^0.6.0",
     "node-sass": "~4.9.4",
     "postcss-loader": "~2.1.0",
