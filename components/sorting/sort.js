@@ -18,14 +18,14 @@ exports.startSort = () => {
 };
 
 // Creates an array that splits at every double carriage return
-exports.splitAtDoubleReturn = (data) => {
+exports.splitAtDoubleReturn = data => {
     return data.toString().split('\n\n');
 };
 
 // Creates an array that splits at every single carriage return
-exports.splitAtSingleReturn = (data) => {
+exports.splitAtSingleReturn = data => {
     let newArray = [];
-    data.forEach((elm) => {
+    data.forEach(elm => {
         let newSplit = elm.toString().split('\n');
         newArray.push(newSplit);
     });
@@ -50,8 +50,14 @@ exports.pushToRawObject = (data) => {
     return results;
 };
 
+// Pushes array to js object
+// exports.pushToRawObject = data => {
+//     let results = Object.fromEntries(data);
+//     return results;
+// };
+
 // Sorts js object and maps unique array of objects to new object
-exports.sortUniqueObject = (data) => {
+exports.sortUniqueObject = data => {
     let results = new Array();
     const map = new Map();
 
@@ -72,7 +78,7 @@ exports.sortUniqueObject = (data) => {
 };
 
 // Converts the js object to JSON
-exports.convertObjToJSON = (data) => {
+exports.convertObjToJSON = data => {
     return JSON.stringify(data);
 };
 
